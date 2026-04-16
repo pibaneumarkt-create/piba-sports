@@ -1,0 +1,2 @@
+export interface Payload {
+    payload: { 'status': string; 'contactId': string; 'contact': { 'name': { 'last': string; 'first': string; }; 'email': string; 'locale': string; 'company': string; 'birthdate': string; 'labelKeys': { 'items': string[]; }; 'contactId': string; 'address': { 'city': string; 'addressLine': string; 'formattedAddress': string; 'country': string; 'postalCode': string; 'addressLine2': string; 'subdivision': string; }; 'jobTitle': string; 'imageUrl': string; 'updatedDate': string; 'phone': string; 'createdDate': string; }; }}

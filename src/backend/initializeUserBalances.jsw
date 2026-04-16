@@ -1,0 +1,44 @@
+import wixCRM from 'wix-crm-backend';
+import wixData from 'wix-data';
+
+export async function createMissingBalances() {
+  let inserted = 0;
+  let query = wixCRM.contacts.queryContacts().limit(50); // limit für Batch-Größe
+  let result = await query.find();
+
+  while (result.items.length > 0) {
+    for (const contact of result.items) {
+      const contactId = contact._id;
+      const email = contact.primaryInfo?.email;
+
+      if (!contactId || !email) continue;
+
+      // Jetzt Detailinfos holen
+      const fullContact = await wixCRM.getContactById(contactId);
+      const firstName = fullContact.firstName ?? "";
+      const lastName = fullContact.lastName ?? "";
+      const name = `${firstName} ${lastName}`.trim();
+
+      // Prüfen, ob Eintrag schon existiert
+      const existing = await wixData.query("userBalances").eq("contactId", contactId).find();
+      if (existing.items.length === 0) {
+        await wixData.insert("userBalances", {
+          contactId,
+          eMail: email,
+          name,
+          balance: 0,
+          lastUpdated: new Date()
+        });
+        inserted++;
+      }
+    }
+
+    if (result.hasNext()) {
+      result = await result.next();
+    } else {
+      break;
+    }
+  }
+
+  return `${inserted} neue Guthaben-Einträge wurden erstellt.`;
+}
