@@ -37,37 +37,39 @@
 
     /* ── HERO ────────────────────────────────────────────────── */
     .hero {
-      position: relative;
-      width: 100%;
-      height: 520px;
-      overflow: hidden;
+      display: flex;
       background: #111;
+      min-height: 520px;
+      overflow: hidden;
     }
 
-    .hero__bg {
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(160deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.25) 55%, rgba(0,0,0,0.60) 100%),
-        url('https://static.wixstatic.com/media/737c4d_e229840de64b435689089ccf4ef81746~mv2.jpg');
-      background-size: cover;
-      background-position: center 30%;
-    }
-
-    .hero__content {
-      position: relative;
-      z-index: 1;
+    .hero__left {
+      flex: 0 0 50%;
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: center;
+      padding: 64px 52px;
+    }
+
+    .hero__right {
+      flex: 0 0 50%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero__right img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
       height: 100%;
-      text-align: center;
-      padding: 0 24px;
+      object-fit: cover;
+      object-position: center 25%;
+      display: block;
     }
 
     .hero__tag {
       display: inline-block;
+      align-self: flex-start;
       background: #fff;
       color: #111;
       font-family: 'Montserrat', sans-serif;
@@ -77,30 +79,27 @@
       text-transform: uppercase;
       padding: 6px 14px;
       border-radius: 10px;
-      margin-bottom: 20px;
+      margin-bottom: 22px;
     }
 
     .hero h1 {
-      font-size: clamp(1.8rem, 5vw, 3rem);
+      font-size: clamp(1.7rem, 3.2vw, 2.8rem);
       color: #fff;
       line-height: 1.1;
-      max-width: 700px;
       margin-bottom: 16px;
     }
 
     .hero__sub {
-      font-size: clamp(0.95rem, 2vw, 1.15rem);
-      color: rgba(255,255,255,0.85);
-      max-width: 520px;
+      font-size: clamp(0.9rem, 1.4vw, 1.05rem);
+      color: rgba(255,255,255,0.8);
       margin-bottom: 32px;
-      line-height: 1.6;
+      line-height: 1.65;
     }
 
     .hero__cta {
       display: flex;
-      gap: 14px;
+      gap: 12px;
       flex-wrap: wrap;
-      justify-content: center;
     }
 
     .btn {
@@ -477,17 +476,20 @@
 
     /* ── RESPONSIVE ──────────────────────────────────────────── */
     @media (max-width: 1024px) {
-      .hero { height: 480px; }
+      .hero__left { padding: 48px 36px; }
       .features { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
     }
 
     @media (max-width: 640px) {
-      /* Hero */
-      .hero { height: 400px; }
+      /* Hero: Bild oben, Text darunter */
+      .hero { flex-direction: column; min-height: auto; }
+      .hero__left { padding: 36px 20px; }
+      .hero__tag { align-self: flex-start; }
       .hero h1 { font-size: 1.65rem; }
       .hero__sub { font-size: 0.92rem; margin-bottom: 24px; }
-      .hero__cta { flex-direction: column; align-items: center; width: 100%; max-width: 320px; }
+      .hero__cta { flex-direction: column; width: 100%; }
       .hero__cta .btn { width: 100%; text-align: center; }
+      .hero__right { order: -1; height: 260px; flex: none; width: 100%; }
 
       /* Sections */
       .section { padding: 48px 18px; }
@@ -533,7 +535,7 @@
 
     /* Sehr kleine Handys (iPhone SE, Galaxy A-Serie ≤ 390px) */
     @media (max-width: 400px) {
-      .hero { height: 360px; }
+      .hero__right { height: 220px; }
       .hero h1 { font-size: 1.45rem; }
 
       .section { padding: 40px 16px; }
@@ -555,8 +557,7 @@
 
   <!-- ── HERO ──────────────────────────────────────────────── -->
   <section class="hero">
-    <div class="hero__bg"></div>
-    <div class="hero__content">
+    <div class="hero__left">
       <span class="hero__tag">Neumarkt i.d.OPf. · Bayern</span>
       <h1>Pickleball in der Nähe von Nürnberg</h1>
       <p class="hero__sub">
@@ -567,6 +568,13 @@
         <a class="btn btn--white" href="https://www.pibasports.de/online-buchen" target="_parent">Jetzt Court buchen</a>
         <a class="btn btn--outline" href="https://www.pibasports.de/pickleball-open-play" target="_parent">Open Play entdecken</a>
       </div>
+    </div>
+    <div class="hero__right">
+      <img
+        src="https://static.wixstatic.com/media/737c4d_e229840de64b435689089ccf4ef81746~mv2.jpg"
+        alt="Zwei Spieler auf dem Pickleball-Court bei Sonnenuntergang"
+        loading="eager"
+      />
     </div>
   </section>
 
