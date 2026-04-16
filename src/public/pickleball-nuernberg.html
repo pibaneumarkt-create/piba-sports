@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pickleball in der Nähe von Nürnberg – PIBA Sports Neumarkt</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Questrial&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+    }
+
+    body {
+      font-family: 'Questrial', sans-serif;
+      color: #1a1a1a;
+      background: #fff;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* ── HERO ────────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 520px;
+      overflow: hidden;
+      background: #111;
+    }
+
+    .hero__bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(160deg, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.38) 60%, rgba(0,0,0,0.65) 100%),
+        linear-gradient(135deg, #1a1a2e 0%, #16213e 40%, #0f3460 70%, #e94560 100%);
+      /* Replace the background above with your Base64 image:
+         background-image: url('data:image/jpeg;base64,...');
+         background-size: cover;
+         background-position: center;
+      */
+    }
+
+    .hero__content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      text-align: center;
+      padding: 0 24px;
+    }
+
+    .hero__tag {
+      display: inline-block;
+      background: #fff;
+      color: #111;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      color: #fff;
+      line-height: 1.1;
+      max-width: 700px;
+      margin-bottom: 16px;
+    }
+
+    .hero__sub {
+      font-size: clamp(0.95rem, 2vw, 1.15rem);
+      color: rgba(255,255,255,0.85);
+      max-width: 520px;
+      margin-bottom: 32px;
+      line-height: 1.6;
+    }
+
+    .hero__cta {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+      padding: 14px 28px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.15s, opacity 0.15s;
+      display: inline-block;
+    }
+
+    .btn:hover { transform: translateY(-2px); opacity: 0.92; }
+
+    .btn--white {
+      background: #fff;
+      color: #111;
+    }
+
+    .btn--outline {
+      background: transparent;
+      color: #fff;
+      border: 2px solid rgba(255,255,255,0.7);
+    }
+
+    /* ── ROUTE STRIP ─────────────────────────────────────────── */
+    .route-strip {
+      background: #111;
+      padding: 20px 24px;
+    }
+
+    .route-strip__inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px 32px;
+    }
+
+    .route-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #fff;
+    }
+
+    .route-item__city {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 0.95rem;
+    }
+
+    .route-item__sep {
+      color: rgba(255,255,255,0.3);
+      font-size: 1.1rem;
+    }
+
+    .route-item__time {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.7);
+    }
+
+    /* ── SECTION COMMONS ─────────────────────────────────────── */
+    .section {
+      padding: 72px 24px;
+    }
+
+    .section--grey {
+      background: #f7f7f7;
+    }
+
+    .section__inner {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .section__label {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 12px;
+    }
+
+    .section__title {
+      font-size: clamp(1.5rem, 3.5vw, 2.2rem);
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .section__intro {
+      font-size: 1.05rem;
+      color: #444;
+      max-width: 600px;
+      line-height: 1.7;
+      margin-bottom: 48px;
+    }
+
+    /* ── WHY SECTION ─────────────────────────────────────────── */
+    .stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+
+    .stat {
+      flex: 1 1 180px;
+      background: #fff;
+      border: 1px solid #e8e8e8;
+      border-radius: 10px;
+      padding: 28px 24px;
+      text-align: center;
+    }
+
+    .section--grey .stat {
+      background: #fff;
+    }
+
+    .stat__value {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 2.4rem;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .stat__label {
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .feature {
+      background: #fff;
+      border: 1px solid #e8e8e8;
+      border-radius: 10px;
+      padding: 28px 24px;
+    }
+
+    .feature__icon {
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+    }
+
+    .feature__title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+
+    .feature__text {
+      font-size: 0.9rem;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    /* ── ANFAHRT ─────────────────────────────────────────────── */
+    .anfahrt-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .anfahrt-card {
+      border: 1px solid #e8e8e8;
+      border-radius: 10px;
+      padding: 28px 22px;
+      background: #fff;
+    }
+
+    .anfahrt-card__city {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      margin-bottom: 6px;
+    }
+
+    .anfahrt-card__meta {
+      font-size: 0.85rem;
+      color: #666;
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+
+    .anfahrt-card__link {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #111;
+      border-bottom: 2px solid #111;
+      padding-bottom: 2px;
+    }
+
+    /* ── ANGEBOTE ────────────────────────────────────────────── */
+    .angebote-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .angebot-card {
+      border: 1px solid #e8e8e8;
+      border-radius: 10px;
+      padding: 32px 26px;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .angebot-card--featured {
+      background: #111;
+      color: #fff;
+      border-color: #111;
+    }
+
+    .angebot-card__type {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 10px;
+    }
+
+    .angebot-card--featured .angebot-card__type {
+      color: rgba(255,255,255,0.5);
+    }
+
+    .angebot-card__title {
+      font-size: 1.3rem;
+      margin-bottom: 6px;
+    }
+
+    .angebot-card__price {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
+
+    .angebot-card__price span {
+      font-size: 1rem;
+      font-weight: 600;
+      opacity: 0.6;
+    }
+
+    .angebot-card__desc {
+      font-size: 0.9rem;
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 28px;
+      flex: 1;
+    }
+
+    .angebot-card--featured .angebot-card__desc {
+      color: rgba(255,255,255,0.7);
+    }
+
+    .btn--dark {
+      background: #111;
+      color: #fff;
+    }
+
+    .btn--white-inv {
+      background: #fff;
+      color: #111;
+    }
+
+    /* ── FAQ ─────────────────────────────────────────────────── */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 720px;
+    }
+
+    .faq-item {
+      border: 1px solid #e8e8e8;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      text-align: left;
+      padding: 20px 24px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: #111;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .faq-question:hover { background: #f7f7f7; }
+
+    .faq-chevron {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #111;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      transition: transform 0.2s;
+    }
+
+    .faq-item.open .faq-chevron {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      display: none;
+      padding: 0 24px 20px;
+      font-size: 0.92rem;
+      color: #555;
+      line-height: 1.7;
+    }
+
+    .faq-item.open .faq-answer {
+      display: block;
+    }
+
+    /* ── CTA BLACK ───────────────────────────────────────────── */
+    .cta-black {
+      background: #111;
+      padding: 80px 24px;
+      text-align: center;
+      color: #fff;
+    }
+
+    .cta-black h2 {
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      margin-bottom: 14px;
+      line-height: 1.15;
+    }
+
+    .cta-black p {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.72);
+      max-width: 520px;
+      margin: 0 auto 36px;
+      line-height: 1.65;
+    }
+
+    .cta-black__btns {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ── RESPONSIVE ──────────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .hero { height: 480px; }
+      .features { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+    }
+
+    @media (max-width: 640px) {
+      .hero { height: 420px; }
+
+      .hero h1 { font-size: 1.75rem; }
+
+      .section { padding: 52px 20px; }
+
+      .stats { gap: 14px; }
+      .stat { flex: 1 1 140px; padding: 20px 16px; }
+      .stat__value { font-size: 2rem; }
+
+      .features { grid-template-columns: 1fr; }
+      .anfahrt-grid { grid-template-columns: 1fr 1fr; }
+      .angebote-grid { grid-template-columns: 1fr; }
+
+      .faq-question { font-size: 0.88rem; padding: 16px 18px; }
+      .faq-answer { padding: 0 18px 16px; }
+
+      .route-strip__inner { gap: 8px 18px; }
+      .route-item__city { font-size: 0.85rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── HERO ──────────────────────────────────────────────── -->
+  <section class="hero">
+    <div class="hero__bg"></div>
+    <div class="hero__content">
+      <span class="hero__tag">Neumarkt i.d.OPf. · Bayern</span>
+      <h1>Pickleball in der Nähe von Nürnberg</h1>
+      <p class="hero__sub">
+        3 professionelle Indoor-Courts, Community mit über 700 Spielern –
+        nur 30 Minuten von Nürnberg entfernt.
+      </p>
+      <div class="hero__cta">
+        <a class="btn btn--white" href="https://www.pibasports.de/online-buchen" target="_parent">Jetzt Court buchen</a>
+        <a class="btn btn--outline" href="https://www.pibasports.de/pickleball-open-play" target="_parent">Open Play entdecken</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ROUTE STRIP ────────────────────────────────────────── -->
+  <div class="route-strip">
+    <div class="route-strip__inner">
+      <div class="route-item">
+        <span class="route-item__city">Nürnberg</span>
+        <span class="route-item__sep">·</span>
+        <span class="route-item__time">~30 Min</span>
+      </div>
+      <div class="route-item">
+        <span class="route-item__city">Regensburg</span>
+        <span class="route-item__sep">·</span>
+        <span class="route-item__time">~45 Min</span>
+      </div>
+      <div class="route-item">
+        <span class="route-item__city">Fürth</span>
+        <span class="route-item__sep">·</span>
+        <span class="route-item__time">~40 Min</span>
+      </div>
+      <div class="route-item">
+        <span class="route-item__city">Altdorf</span>
+        <span class="route-item__sep">·</span>
+        <span class="route-item__time">~15 Min</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── WHY SECTION ───────────────────────────────────────── -->
+  <section class="section section--grey">
+    <div class="section__inner">
+      <p class="section__label">Warum PIBA Sports?</p>
+      <h2 class="section__title">Die beste Pickleball-Anlage<br>in der Region</h2>
+      <p class="section__intro">
+        Bei PIBA Sports Neumarkt findest du alles, was du für großartiges Pickleball brauchst –
+        von Einsteiger-Sessions bis zu kompetitiven Spielen.
+      </p>
+
+      <div class="stats">
+        <div class="stat">
+          <div class="stat__value">700+</div>
+          <div class="stat__label">Aktive Spieler</div>
+        </div>
+        <div class="stat">
+          <div class="stat__value">3</div>
+          <div class="stat__label">Indoor-Courts</div>
+        </div>
+        <div class="stat">
+          <div class="stat__value">30 Min</div>
+          <div class="stat__label">Ab Nürnberg</div>
+        </div>
+      </div>
+
+      <div class="features">
+        <div class="feature">
+          <div class="feature__icon">🏟️</div>
+          <div class="feature__title">Professionelle Courts</div>
+          <p class="feature__text">
+            3 Indoor-Courts mit professionellen Belägen, optimaler Beleuchtung
+            und komfortabler Raumhöhe – ganzjährig wetterunabhängig spielen.
+          </p>
+        </div>
+        <div class="feature">
+          <div class="feature__icon">👥</div>
+          <div class="feature__title">Starke Community</div>
+          <p class="feature__text">
+            Über 700 aktive Spieler aller Levels. Open Play Sessions, Turniere
+            und Events sorgen für konstante Mitspieler auf deinem Niveau.
+          </p>
+        </div>
+        <div class="feature">
+          <div class="feature__icon">🎓</div>
+          <div class="feature__title">Kurse & Coaching</div>
+          <p class="feature__text">
+            Vom Anfängerkurs bis zum Advanced-Training – unsere Coaches
+            bringen dich schnell voran, egal ob Einsteiger oder Fortgeschrittener.
+          </p>
+        </div>
+        <div class="feature">
+          <div class="feature__icon">📅</div>
+          <div class="feature__title">Flexible Buchung</div>
+          <p class="feature__text">
+            Buche deinen Court schnell und einfach online – mit freier Wahl
+            von Uhrzeit und Courtgröße, auch kurzfristig.
+          </p>
+        </div>
+        <div class="feature">
+          <div class="feature__icon">🎉</div>
+          <div class="feature__title">Teamevents</div>
+          <p class="feature__text">
+            Firmenevent, Geburtstag oder Teambuilding? Wir organisieren
+            maßgeschneiderte Pickleball-Events für Gruppen jeder Größe.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ANFAHRT ────────────────────────────────────────────── -->
+  <section class="section">
+    <div class="section__inner">
+      <p class="section__label">Anfahrt</p>
+      <h2 class="section__title">Schnell erreichbar aus<br>der ganzen Region</h2>
+      <p class="section__intro">
+        PIBA Sports liegt in Neumarkt i.d.OPf. – ideal gelegen zwischen Nürnberg
+        und Regensburg, direkt an der A3.
+      </p>
+
+      <div class="anfahrt-grid">
+        <div class="anfahrt-card">
+          <div class="anfahrt-card__city">Nürnberg</div>
+          <div class="anfahrt-card__meta">ca. 30 km · ~30 Min<br>A3 Richtung Regensburg</div>
+          <a class="anfahrt-card__link" href="https://maps.google.com/?q=PIBA+Sports+Neumarkt" target="_blank">Route starten →</a>
+        </div>
+        <div class="anfahrt-card">
+          <div class="anfahrt-card__city">Regensburg</div>
+          <div class="anfahrt-card__meta">ca. 55 km · ~45 Min<br>A3 Richtung Nürnberg</div>
+          <a class="anfahrt-card__link" href="https://maps.google.com/?q=PIBA+Sports+Neumarkt" target="_blank">Route starten →</a>
+        </div>
+        <div class="anfahrt-card">
+          <div class="anfahrt-card__city">Fürth</div>
+          <div class="anfahrt-card__meta">ca. 38 km · ~40 Min<br>Über Nürnberg / A3</div>
+          <a class="anfahrt-card__link" href="https://maps.google.com/?q=PIBA+Sports+Neumarkt" target="_blank">Route starten →</a>
+        </div>
+        <div class="anfahrt-card">
+          <div class="anfahrt-card__city">Altdorf</div>
+          <div class="anfahrt-card__meta">ca. 12 km · ~15 Min<br>B299 Richtung Neumarkt</div>
+          <a class="anfahrt-card__link" href="https://maps.google.com/?q=PIBA+Sports+Neumarkt" target="_blank">Route starten →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ANGEBOTE ───────────────────────────────────────────── -->
+  <section class="section section--grey">
+    <div class="section__inner">
+      <p class="section__label">Angebote & Preise</p>
+      <h2 class="section__title">Das passende Angebot<br>für jeden</h2>
+      <p class="section__intro">
+        Ob Spontan-Session, regelmäßiges Training oder großes Gruppen-Event –
+        bei uns findest du das richtige Format.
+      </p>
+
+      <div class="angebote-grid">
+        <div class="angebot-card angebot-card--featured">
+          <div class="angebot-card__type">Beliebt</div>
+          <div class="angebot-card__title">Open Play</div>
+          <div class="angebot-card__price">12 € <span>/ Person</span></div>
+          <p class="angebot-card__desc">
+            Einfach vorbeikommen und mitspielen. Kein fester Partner nötig –
+            wir koordinieren die Gruppen vor Ort. Perfekt für Einsteiger und
+            alle, die neue Spieler kennenlernen wollen.
+          </p>
+          <a class="btn btn--white-inv" href="https://www.pibasports.de/pickleball-open-play" target="_parent">Zur Session anmelden</a>
+        </div>
+
+        <div class="angebot-card">
+          <div class="angebot-card__type">Flexibel</div>
+          <div class="angebot-card__title">Einzelplatz buchen</div>
+          <div class="angebot-card__price">30 € <span>/ Stunde</span></div>
+          <p class="angebot-card__desc">
+            Buche einen Court für deine eigene Gruppe – ideal für Training
+            mit Freunden, Vereinsspiel oder wenn du deinen eigenen Rhythmus
+            bestimmen möchtest.
+          </p>
+          <a class="btn btn--dark" href="https://www.pibasports.de/online-buchen" target="_parent">Court buchen</a>
+        </div>
+
+        <div class="angebot-card">
+          <div class="angebot-card__type">Gruppen</div>
+          <div class="angebot-card__title">Teamevent</div>
+          <div class="angebot-card__price">Auf <span>Anfrage</span></div>
+          <p class="angebot-card__desc">
+            Pickleball als Firmen-Event, Geburtstag oder Teambuilding –
+            wir planen alles inklusive Moderation, Equipment und Catering-Optionen
+            für Gruppen ab 10 Personen.
+          </p>
+          <a class="btn btn--dark" href="https://www.pibasports.de/kontakt" target="_parent">Anfrage senden</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FAQ ───────────────────────────────────────────────── -->
+  <section class="section">
+    <div class="section__inner">
+      <p class="section__label">FAQ</p>
+      <h2 class="section__title" style="margin-bottom: 36px;">Häufige Fragen</h2>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Brauche ich eigene Ausrüstung?</span>
+            <span class="faq-chevron">+</span>
+          </button>
+          <div class="faq-answer">
+            Nein – Paddle und Bälle können bei uns ausgeliehen werden.
+            Sportschuhe mit heller Sohle (keine Outdoor-Profilsohlen) sind
+            erforderlich, um die Court-Oberfläche zu schützen.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Ich bin Anfänger – kann ich einfach kommen?</span>
+            <span class="faq-chevron">+</span>
+          </button>
+          <div class="faq-answer">
+            Absolut! Pickleball ist sehr schnell erlernbar. Beim Open Play
+            werden Anfänger und Fortgeschrittene gemischt – erfahrene Spieler
+            helfen dir gerne. Alternativ empfehlen wir unsere Einsteiger-Kurse.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Wie komme ich von Nürnberg am schnellsten hin?</span>
+            <span class="faq-chevron">+</span>
+          </button>
+          <div class="faq-answer">
+            Am einfachsten mit dem Auto über die A3 Richtung Regensburg,
+            Ausfahrt Neumarkt. Fahrzeit ab Nürnberg-Mitte ca. 30 Minuten.
+            Kostenlose Parkplätze stehen direkt vor der Anlage zur Verfügung.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Gibt es regelmäßige Open Play Zeiten?</span>
+            <span class="faq-chevron">+</span>
+          </button>
+          <div class="faq-answer">
+            Ja, wir bieten mehrmals pro Woche Open Play Sessions an –
+            tagsüber und abends. Die aktuellen Zeiten und freien Plätze
+            findest du immer aktuell auf unserer Buchungsseite.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Kann ich einen Court für ein Firmen-Event buchen?</span>
+            <span class="faq-chevron">+</span>
+          </button>
+          <div class="faq-answer">
+            Ja! Wir organisieren Teamevents und Firmenpakete ab 10 Personen –
+            inklusive Einweisung, Equipment und optionalem Catering.
+            Schreib uns einfach über das Kontaktformular und wir melden uns
+            innerhalb von 24 Stunden zurück.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA BLACK ─────────────────────────────────────────── -->
+  <section class="cta-black">
+    <h2>Bereit für dein erstes Spiel?</h2>
+    <p>
+      Komm einfach vorbei – als Einzelspieler beim Open Play oder
+      buche direkt deinen Court online. Wir freuen uns auf dich!
+    </p>
+    <div class="cta-black__btns">
+      <a class="btn btn--white" href="https://www.pibasports.de/online-buchen" target="_parent">Court buchen</a>
+      <a class="btn btn--outline" href="https://www.pibasports.de/pickleball-open-play" target="_parent">Open Play ansehen</a>
+    </div>
+  </section>
+
+  <!-- ── AUTO-RESIZE FOR WIX IFRAME ───────────────────────── -->
+  <script>
+    (function () {
+      function sendHeight() {
+        var h = document.documentElement.scrollHeight || document.body.scrollHeight;
+        window.parent.postMessage({ type: 'iframeHeight', height: h }, '*');
+      }
+
+      sendHeight();
+      window.addEventListener('load', sendHeight);
+      window.addEventListener('resize', sendHeight);
+
+      if (typeof ResizeObserver !== 'undefined') {
+        new ResizeObserver(sendHeight).observe(document.body);
+      } else {
+        setInterval(sendHeight, 800);
+      }
+    })();
+
+    // FAQ toggle
+    document.querySelectorAll('.faq-question').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var item = btn.closest('.faq-item');
+        var isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(function (el) {
+          el.classList.remove('open');
+          el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
