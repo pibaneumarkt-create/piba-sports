@@ -53,18 +53,10 @@
 
     .hero__right {
       flex: 0 0 50%;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero__right img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center 25%;
-      display: block;
+      background-image: url('https://static.wixstatic.com/media/737c4d_e229840de64b435689089ccf4ef81746~mv2.jpg');
+      background-size: cover;
+      background-position: center 25%;
+      min-height: 360px;
     }
 
     .hero__tag {
@@ -489,7 +481,7 @@
       .hero__sub { font-size: 0.92rem; margin-bottom: 24px; }
       .hero__cta { flex-direction: column; width: 100%; }
       .hero__cta .btn { width: 100%; text-align: center; }
-      .hero__right { order: -1; height: 260px; flex: none; width: 100%; }
+      .hero__right { order: -1; min-height: 260px; flex: none; width: 100%; }
 
       /* Sections */
       .section { padding: 48px 18px; }
@@ -535,7 +527,7 @@
 
     /* Sehr kleine Handys (iPhone SE, Galaxy A-Serie ≤ 390px) */
     @media (max-width: 400px) {
-      .hero__right { height: 220px; }
+      .hero__right { min-height: 220px; }
       .hero h1 { font-size: 1.45rem; }
 
       .section { padding: 40px 16px; }
@@ -569,13 +561,7 @@
         <a class="btn btn--outline" href="https://www.pibasports.de/pickleball-open-play" target="_parent">Open Play entdecken</a>
       </div>
     </div>
-    <div class="hero__right">
-      <img
-        src="https://static.wixstatic.com/media/737c4d_e229840de64b435689089ccf4ef81746~mv2.jpg"
-        alt="Zwei Spieler auf dem Pickleball-Court bei Sonnenuntergang"
-        loading="eager"
-      />
-    </div>
+    <div class="hero__right" role="img" aria-label="Zwei Spieler auf dem Pickleball-Court bei Sonnenuntergang"></div>
   </section>
 
   <!-- ── ROUTE STRIP ────────────────────────────────────────── -->
