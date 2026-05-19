@@ -1,10 +1,23 @@
 // API Reference: https://www.wix.com/velo/reference/api-overview/introduction
 // “Hello, World!” Example: https://learn-code.wix.com/en/article/hello-world
 
+function fixScroll() {
+    document.querySelectorAll('[id^=”bgLayers_”]').forEach(function(el) {
+        el.style.overflow = 'visible';
+        el.style.overflowX = 'hidden';
+    });
+    var ids = ['SITE_PAGES', 'SITE_ROOT', 'masterPage'];
+    ids.forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el) {
+            el.style.overflow = 'visible';
+            el.style.overflowX = 'hidden';
+        }
+    });
+}
+
 $w.onReady(function () {
-    // Write your JavaScript here
-
-    // To select an element by ID use: $w('#elementID')
-
-    // Click 'Preview' to run your code
+    fixScroll();
+    setTimeout(fixScroll, 500);
+    setTimeout(fixScroll, 1500);
 });
