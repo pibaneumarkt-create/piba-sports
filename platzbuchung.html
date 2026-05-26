@@ -42,8 +42,7 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-html{overflow-x:hidden}
-body{font-family:'Questrial',Arial,sans-serif;background:#fff;color:#000;font-size:16px;line-height:1.6;width:100%;overflow-x:hidden;overflow-y:visible;-webkit-overflow-scrolling:touch}
+body{font-family:'Questrial',Arial,sans-serif;background:#fff;color:#000;font-size:16px;line-height:1.6;width:100%;overflow-x:hidden}
 
 /* ── HERO ── */
 .hero{display:grid;grid-template-columns:1fr 1fr;min-height:560px;background:#fff}
@@ -504,8 +503,10 @@ sendHeight();
 document.addEventListener('DOMContentLoaded',sendHeight);
 window.addEventListener('load',function(){
   sendHeight();
-  // Mehrfach messen damit dynamische Inhalte (CircleSquare) erfasst werden
   [500,1000,1500,2000,3000,5000].forEach(function(t){setTimeout(sendHeight,t);});
+  // Interval läuft 10s damit späte Inhalte erfasst werden, dann Stop
+  var iv=setInterval(sendHeight,1000);
+  setTimeout(function(){clearInterval(iv);},10000);
 });
 window.addEventListener('resize',sendHeight);
 </script>
