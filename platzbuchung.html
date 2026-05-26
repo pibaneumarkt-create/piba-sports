@@ -42,8 +42,8 @@
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-html{overflow-x:clip}
-body{font-family:'Questrial',Arial,sans-serif;background:#fff;color:#000;font-size:16px;line-height:1.6;width:100%;overflow-x:hidden;-webkit-overflow-scrolling:touch}
+html{overflow-x:hidden}
+body{font-family:'Questrial',Arial,sans-serif;background:#fff;color:#000;font-size:16px;line-height:1.6;width:100%;overflow-x:hidden;overflow-y:visible;-webkit-overflow-scrolling:touch}
 
 /* ── HERO ── */
 .hero{display:grid;grid-template-columns:1fr 1fr;min-height:560px;background:#fff}
@@ -502,9 +502,12 @@ function sendHeight(){
 }
 sendHeight();
 document.addEventListener('DOMContentLoaded',sendHeight);
-window.addEventListener('load',function(){sendHeight();setTimeout(sendHeight,500);setTimeout(sendHeight,1500);setTimeout(sendHeight,3000);});
+window.addEventListener('load',function(){
+  sendHeight();
+  // Mehrfach messen damit dynamische Inhalte (CircleSquare) erfasst werden
+  [500,1000,1500,2000,3000,5000].forEach(function(t){setTimeout(sendHeight,t);});
+});
 window.addEventListener('resize',sendHeight);
-if(typeof ResizeObserver!=='undefined'){new ResizeObserver(sendHeight).observe(document.body);}
 </script>
 
 <!-- BOOKING MODAL -->
